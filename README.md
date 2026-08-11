@@ -4,6 +4,8 @@
 
 This repository provides the data and scripts to run a two-box  model estimating the residence time of 1,2,4-triazole in Lake Geneva with different mixing scenarios.
 
+Link to the GitHub repository: https://github.com/tdoda/triazole-Geneva.git
+
 ## Installation (TO UPDATE)
 
 ### 1. Python installation
