@@ -10,7 +10,7 @@ Link to the GitHub repository: https://github.com/tdoda/triazole-Geneva.git
 
 ### 1. Python installation
 
-Python 3 (version > 3.11) is required to run the scripts. Three installation are possible:
+Python 3 is required to run the scripts. Three installation are possible:
 - Recommended option: download [Miniforge](https://github.com/conda-forge/miniforge). 
 - User-friendly option: download the [Anaconda distribution](https://www.anaconda.com/products/individual).
 - Classic option: download Python from the [official website](https://www.python.org/downloads/).
@@ -20,38 +20,39 @@ Python 3 (version > 3.11) is required to run the scripts. Three installation are
 - If using GIT, clone the repository to your local machine using the command in Git Bash: 
 
     ``` 
-    git clone https://github.com/tdoda/lake-kivu-ctd-database.git 
+    git clone https://github.com/tdoda/triazole-Geneva.git 
     ```
  
     Note that the repository will be copied to your current working directory.
-- Without GIT, just download the entire ZIP folder from https://github.com/tdoda/lake-kivu-ctd-database.git ("Code" > "Download ZIP") and extract it.
+- Without GIT, just download the entire ZIP folder from https://github.com/tdoda/triazole-Geneva.git ("Code" > "Download ZIP") and extract it.
 
 ### 3. Packages installation
 
-1. Open the terminal (e.g., Anaconda Prompt), and move to the `lake-kivu-ctd-database` repository.
-2. Create a new environment *kivu-ctd* and install the packages as follows:
+1. Open the terminal (e.g., Anaconda Prompt), and move to the `triazole-Geneva` repository.
+2. Create a new environment *triazole-Geneva* and install the packages as follows:
     - If using conda (Anaconda or Miniforge installation):
         ```
         conda env create -f environment.yml
-        conda activate kivu-ctd 
+        conda activate triazole-Geneva
         ```
         It is also possible to install the packages from `requirements.txt` with pip instead:
         ```
-        conda create -n kivu-ctd python=3.11
-        conda activate kivu-ctd
+        conda create -n triazole-Geneva python=3.12
+        conda activate triazole-Geneva
         pip install -r requirements.txt
         ```
     - If using mamba (Anaconda or Miniforge installation):
         ```
         mamba env create -f environment.yml
-        mamba activate kivu-ctd 
+        mamba activate triazole-Geneva 
         ```
     - If using pip (classic Python installation):
         ```
-        python -m venv kivu-ctd       
-        source kivu-ctd /bin/activate  # For Linux/macOS
-        kivu-ctd\Scripts\activate     # For Windows
+        python -m venv triazole-Geneva       
+        source triazole-Geneva /bin/activate  # For Linux/macOS
+        triazole-Geneva\Scripts\activate     # For Windows
         pip install -r requirements.txt
+        ```
 
 
 ## Usage
@@ -62,6 +63,32 @@ How to run the model
 
 ### Overview of the repository structure
 
+    triazole-Geneva/
+    ├── data/ 
+    ├── mixing_depth/
+    │   └── historical_deep_mixing.csv
+    ├── morphology/
+    │   └── Lake_Geneva_Morphology.csv
+    └──plunge_depth/
+    │   └── plunge_depth_percentage.csv
+    ├── figures/ 
+    ├── notebooks/
+    │   ├── Model_analytical/
+    │   └── Model_varying_mixing/
+    │       ├── Mixing_simulation/
+    │       ├── Results/
+    │       └── Figures/
+    ├── report/
+    ├── requirements.txt 
+    ├── environment.yml 
+    └── README.md 
+
 ### Folder `data`
+
+### Folder `notebooks`
+
+### Folder `figures`
+
+### Folder `report`
 
 ## Contact information
