@@ -83,19 +83,46 @@ Parameters that can be modified are:
     ```python 
     N_REALIZATIONS = 1000
     ```
+Press <kbd>Run All</kbd> to run the script. Three new csv files will be created in `notebooks/Model_varying_mixing/Mixing_simulation/` with the time series of $h_{epi}$ for each scenario.
+
 ### Run the model with a specific mixing scenario
 
-In `notebooks/Model_varying_mixing/run_scenario.ipynb`, select the mixing scenario by setting *scenario_select* to either 0 (no mixing), 1 (periodic mixing) or 2 (stochastic mixing): 
+In `notebooks/Model_varying_mixing/run_scenario.ipynb`:
 
-```python 
-scenario_select=0 # 0: constant_scenario, 1: periodic_scenario, 2: simulations
-```
+1. In the **Parameters** section, select the mixing scenario by setting *scenario_select* to either 0 (no mixing), 1 (periodic mixing) or 2 (stochastic mixing): 
 
+    ```python 
+    scenario_select=2 # 0: constant_scenario, 1: periodic_scenario, 2: simulations
+    ```
+2. In the **Parameters** section, select the location of the inflow by setting *inflow_select* to either 0 (epilimnion only), 1 (hypolimnion only) or 2 (splitted between the epilimnion and the hypolimnion, based on the plunging depth statistics):
+    ```python 
+    inflow_select=2 # 0: surface inflow only, 1: deep inflow only, 2: splitted inflow based on plunging depth
+    ```
+3. In the **Parameters** section, select the figure language (variable *lang*) and indicate whether the figures need to be exported as .png files (variable *savefig*). For example, to export figures in French:
+    ```python 
+    # Choose the language for figures (FR or EN)
+    lang='FR'
+    savefig=True # =True to save figures
+    ```
 
+4. Press <kbd>Run All</kbd> to run the script. The result of the selected scenario will be exported as a netCDF file in `notebooks/Model_varying_mixing/Results/` and figures will be exported as png files in `notebooks/Model_varying_mixing/Figures/` if *savefig* was set to *True*.
 
 ### Combine the results of the three mixing scenarios
 
+If the results from the three mixing scenarios with splitted inflow are available as netCDF files in `notebooks/Model_varying_mixing/Results/`, figures combining those scenarios can be generated with the notebook `notebooks/Model_varying_mixing/combine_scenarios.ipynb`:
 
+1. In the **Parameters** section, select the figure language (variable *lang*) and indicate whether the figures need to be exported as .png files (variable *savefig*). For example, to export figures in French:
+    ```python 
+    # Choose the language for figures (FR or EN)
+    lang='FR'
+    savefig=True # =True to save figures
+    ```
+
+2. In the **Parameters** section, select the upper bound of the time axis (variable *tmax* in years):
+    ```python 
+    tmax=50 # [yr], maximum time for x axis
+    ```
+3. Press <kbd>Run All</kbd> to run the script. Figures will be exported as png files in `notebooks/Model_varying_mixing/Figures/` if *savefig* was set to *True*.
 
 ## Organization of the repository
 
@@ -127,20 +154,38 @@ scenario_select=0 # 0: constant_scenario, 1: periodic_scenario, 2: simulations
     │       │    └── *.png
     │       ├── run_scenario.ipynb
     │       ├── combine_scenarios.ipynb
-    │       └── functions.py
+    │       ├── functions.py
+    │       ├── Schematic_EN.png
+    │       ├── Schematic_FR.png
+    │       └── Schematic.pptx
     ├── report/
-    │   └── Rapport_triazole_Leman.docx
+    │   └── Rapport_triazole_Leman_final.docx
     ├── requirements.txt 
     ├── environment.yml 
     └── README.md 
 
 ### Folder `data`
 
+Data used by the model, which is divided into the following subfolders:
+- `mixing_depth`: historical time series of mixing depths from CIPEL annual reports.
+- `morphology`: hypsometry of Lake Geneva from [datalakes](https://www.datalakes-eawag.ch/lakemorphology?lakegeneva_1).
+- `plunge_depth`: Rhône plunging depth statistics derived from an entrainment model applied to the Rhône water density.
+
 ### Folder `notebooks`
 
-### Folder `figures`
+Notebooks used to run the model.
+
+- `Model_analytical`: analytical model with same volume between the two layers, no mixing and inflow in the hypolimnion only. The notebook `run_analytical_model.ipynb` runs the model and the figures can be saved in the `Figures` folder.
+- `Model_varying_mixing`: numerical model with three mixing scenarios.
+    - The folder `Mixing_simulation` contains the time series of $h_{epi}$ for each scenario as csv files and the notebook `lake_geneva_deep_mixing_simulation-3.ipynb` that generates those time series.
+    - The notebook `run_scenario.ipynb` runs the model for a specific scenario and exports figures and results in `Figures` and `Results` folders, respectively. 
+    - The notebook `combine_scenarios.ipynb` plots the results from the three mixing scenarios in the same figures.
+    -  `functions.py` contains functions called by the notebooks.
+    - A schematic of the two-box model is made in `Schematic.pptx` and exported to an English and to a French version as png files.
 
 ### Folder `report`
+
+Short report summarizing the methods and results of the project (in French).
 
 ## Contact information
 
